@@ -644,7 +644,8 @@ nfr("gl_line", "start,end,thickness", "F}F}1F", "",
 nfr("gl_perspective", "fovy,znear,zfar,frame_buffer_size,frame_buffer_offset", "FFFI}:2?I}:2?", "",
     "changes from 2D mode (default) to 3D right handed perspective mode with vertical fov (try"
     " 60), far plane (furthest you want to be able to render, try 1000) and near plane (try"
-    " 1). Optionally specify a framebuffer size to override the current gl_framebuffer_size",
+    " 1). Optionally specify a framebuffer size and offset to override the current gl_framebuffer_size"
+    " and set glViewport to render to part of the screen",
     [](StackPtr &sp, VM &) {
         int2 fbo = Top(sp).True()
             ? PopVec<int2>(sp)
