@@ -69,6 +69,14 @@ template<typename T> class Chunk3DGrid : NonCopyable {
         }
         dim = ndim;
     }
+
+    void Copy(const Chunk3DGrid &source) {
+        assert(dim == source.dim);
+        for (int i = 0; i < dim.x; i++) {
+            auto len = dim.y * dim.z;
+            std::copy_n(source.grid[i], len, grid[i]);
+        }
+    }
 };
 
 // Stores an XY grid of RLE Z lists, based on the value of T.
